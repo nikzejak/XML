@@ -1,0 +1,55 @@
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <mat-card>
+          <h3>View pricelist</h3>
+          <hr>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <label for="realPrice">Real price</label>
+              <input type="text" readonly id="realPrice" formControlName="realPrice" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && registerForm.get('realPrice').errors }">
+
+              <div *ngIf="submitted && registerForm.get('realPrice').errors" class="invalid-feedback">
+                <div *ngIf="registerForm.get('realPrice').errors['required']">Real price is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="priceForMileage">Price for mileage</label>
+              <input type="text" readonly id="priceForMileage" formControlName="priceForMileage" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && registerForm.get('priceForMileage').errors }">
+
+              <div *ngIf="submitted && registerForm.get('priceForMileage').errors" class="invalid-feedback">
+                <div *ngIf="registerForm.get('priceForMileage').errors['required']">Price for mileage is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="priceForCollisionDamageWavier">Price for Collision Damage Wavier</label>
+              <input type="text" readonly id="priceForCollisionDamageWavier" formControlName="priceForCollisionDamageWavier" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && registerForm.get('priceForCollisionDamageWavier').errors }">
+
+              <div *ngIf="submitted && registerForm.get('priceForCollisionDamageWavier').errors" class="invalid-feedback">
+                <div *ngIf="registerForm.get('priceForCollisionDamageWavier').errors['required']">Price for Collision Damage Wavier is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="discountAfterDays">Discount after</label>
+              <input type="text" readonly id="discountAfterDays" formControlName="discountAfterDays" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && registerForm.get('discountAfterDays').errors }">
+
+              <div *ngIf="submitted && registerForm.get('discountAfterDays').errors" class="invalid-feedback">
+                <div *ngIf="registerForm.get('discountAfterDays').errors['required']">Discount after is required</div>
+              </div>
+            </div>
+          </form>
+          <button mat-raised-button color="primary" class="pull-right" (click)="close()">Close</button>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+

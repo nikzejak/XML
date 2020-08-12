@@ -1,0 +1,18 @@
+table {
+  width: 75%;
+  margin-top:50px;
+  margin-left:300px;
+
+}
+mat-placeholder {
+  width: 75%;
+  margin-top:50px;
+  margin-left:300px;
+
+}
+
+mat-paginator {
+  width: 75%;
+  margin-left:300px;
+}
+

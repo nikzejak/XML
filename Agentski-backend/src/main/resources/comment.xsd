@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://ftn.uns.ac.rs.tim13" xmlns:tns="http://ftn.uns.ac.rs.tim13" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" form="qualified" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="role" type="tns:Role" form="qualified" minOccurs="0"/>
+      <xs:element name="status" type="tns:UserStatus" form="qualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TransmissionType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" form="qualified" minOccurs="0"/>
+      <xs:element name="serialNumber" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="type" type="xs:string" form="qualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Car">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" form="qualified" minOccurs="0"/>
+      <xs:element name="carBrand" type="tns:CarBrand" form="qualified" minOccurs="0"/>
+      <xs:element name="carModel" type="tns:CarModel" form="qualified" minOccurs="0"/>
+      <xs:element name="carType" type="tns:CarType" form="qualified" minOccurs="0"/>
+      <xs:element name="fuelType" type="tns:FuelType" form="qualified" minOccurs="0"/>
+      <xs:element name="transmissionType" type="tns:TransmissionType" form="qualified" minOccurs="0"/>
+      <xs:element name="discount" type="xs:int" form="qualified"/>
+      <xs:element name="mileage" type="xs:float" form="qualified"/>
+      <xs:element name="carStatus" type="tns:CarStatus" form="qualified" minOccurs="0"/>
+      <xs:element name="distanceAllowed" type="xs:float" form="qualified"/>
+      <xs:element name="collisionDamageWaiver" type="xs:boolean" form="qualified"/>
+      <xs:element name="childSeats" type="xs:int" form="qualified"/>
+      <xs:element name="averageRating" type="xs:double" form="qualified"/>
+      <xs:element name="commentCount" type="xs:int" form="qualified"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CarBrand">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" form="qualified" minOccurs="0"/>
+      <xs:element name="brand" type="xs:string" form="qualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CarModel">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" form="qualified" minOccurs="0"/>
+      <xs:element name="model" type="xs:string" form="qualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CarType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" form="qualified" minOccurs="0"/>
+      <xs:element name="type" type="xs:string" form="qualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FuelType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" form="qualified" minOccurs="0"/>
+      <xs:element name="type" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="serialNumber" type="xs:string" form="qualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Client">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" form="qualified" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="firstName" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="lastName" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="jmbg" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="phoneNumber" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="personalID" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="pib" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="address" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="role" type="tns:Role" form="qualified" minOccurs="0"/>
+      <xs:element name="ads" type="tns:Ad" form="qualified" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="adCounter" type="xs:int" form="qualified"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Ad">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" form="qualified" minOccurs="0"/>
+      <xs:element name="car" type="tns:Car" form="qualified" minOccurs="0"/>
+      <xs:element name="profilePicture" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="title" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="client" type="tns:Client" form="qualified" minOccurs="0"/>
+      <xs:element name="startOfAd" type="xs:dateTime" form="qualified" minOccurs="0"/>
+      <xs:element name="endOfAd" type="xs:dateTime" form="qualified" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="isActive" type="xs:boolean" form="qualified"/>
+      <xs:element name="currentDriver" type="tns:Client" form="qualified" minOccurs="0"/>
+      <xs:element name="comments" type="tns:Comment" form="qualified" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="place" type="xs:string" form="qualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Comment">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" form="qualified" minOccurs="0"/>
+      <xs:element name="commenter" type="tns:User" form="qualified" minOccurs="0"/>
+      <xs:element name="comment" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="approved" type="xs:boolean" form="qualified"/>
+      <xs:element name="carRating" type="xs:int" form="qualified"/>
+      <xs:element name="ad" type="tns:Ad" form="qualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="UserStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACCEPTED"/>
+      <xs:enumeration value="AWAITING_APPROVAL"/>
+      <xs:enumeration value="BLOCKED"/>
+      <xs:enumeration value="REMOVED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Role">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADMINISTRATOR"/>
+      <xs:enumeration value="ENDUSER"/>
+      <xs:enumeration value="FIRM"/>
+      <xs:enumeration value="AGENT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CarStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RENTED"/>
+      <xs:enumeration value="NOT_RENTED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="getCommentRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="id" type="xs:long" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getCommentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="comment" type="tns:Comment" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+

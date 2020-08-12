@@ -1,0 +1,23 @@
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <mat-card>
+          <h3>Add Car Brand</h3>
+          <hr>
+          <form [formGroup]="addCarBrandForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="car_brand">Car brand</label>
+              <input type="text" id="car_brand" formControlName="car_brand" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && addCarBrandForm.get('car_brand').errors }" />
+              <div *ngIf="submitted && addCarBrandForm.get('car_brand').errors" class="invalid-feedback">
+                <div *ngIf="addCarBrandForm.get('car_brand').errors['required']">Car brand is required</div>
+              </div>
+            </div>
+            <button mat-raised-button style="position: center" color="primary" class="pull-right">Save</button>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

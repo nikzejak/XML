@@ -1,0 +1,136 @@
+<div class="prozor">
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <mat-card>
+          <h3>Advanced search</h3>
+          <hr>
+
+          <form [formGroup]="addAdForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="carModel">Car model</label>
+            <input type="text" id="carModel" formControlName="carModel" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && addAdForm.get('carModel').errors }" />
+            <div *ngIf="submitted && addAdForm.get('carModel').errors" class="invalid-feedback">
+              <div *ngIf="addAdForm.get('carModel').errors['required']">Phone Number is required</div>
+              <div *ngIf="addAdForm.get('carModel').errors['minlength']">A phone number must have at least 9
+                digits
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="carBrand">Car brand</label>
+            <input type="text" id="carBrand" formControlName="carBrand" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && addAdForm.get('carBrand').errors }" />
+            <div *ngIf="submitted && addAdForm.get('childSeats').errors" class="invalid-feedback">
+              <div *ngIf="addAdForm.get('carBrand').errors['required']">Phone Number is required</div>
+              <div *ngIf="addAdForm.get('carBrand').errors['minlength']">A phone number must have at least 9
+                digits
+              </div>
+            </div>
+          </div>
+
+
+          <div>
+            <mat-form-field>
+              <mat-select id="carType" formControlName="carType" class="form-control" placeholder="Select a car type">
+                <mat-option *ngFor="let option of carTypes" value="{{option.type}}">{{option.type}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <mat-select id="transmissionType" formControlName="transmissionType" class="form-control" placeholder="Select a transmission type">
+                <mat-option *ngFor="let option of transTypes" value="{{option.type}}">{{option.type}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <mat-form-field>
+            <mat-select id="fuelType" formControlName="fuelType" class="form-control" placeholder="Select a fuel type">
+              <mat-option *ngFor="let option of fuelTypes" value="{{option.type}}">{{option.type}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input type="text" id="price" formControlName="price" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && addAdForm.get('price').errors }" />
+              <div *ngIf="submitted && addAdForm.get('price').errors" class="invalid-feedback">
+                <div *ngIf="addAdForm.get('price').errors['required']">Minimal price is required</div>
+                <div *ngIf="addAdForm.get('price').errors['minlength']">A phone number must have at least 9
+                digits
+              </div>
+              </div>
+            </div>
+              <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" id="price2" formControlName="price2" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && addAdForm.get('price2').errors }" />
+                <div *ngIf="submitted && addAdForm.get('price2').errors" class="invalid-feedback">
+                  <div *ngIf="addAdForm.get('price2').errors['required']">Maximal price is required</div>
+                  <div *ngIf="addAdForm.get('price2').errors['minlength']">A phone number must have at least 9
+                  digits
+                </div>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="mileage">Mileage</label>
+                <input type="text" id="mileage" formControlName="mileage" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && addAdForm.get('mileage').errors }" />
+                <div *ngIf="submitted && addAdForm.get('mileage').errors" class="invalid-feedback">
+                  <div *ngIf="addAdForm.get('mileage').errors['required']">Phone Number is required</div>
+                  <div *ngIf="addAdForm.get('mileage').errors['minlength']">A phone number must have at least 9
+                    digits
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="distanceAllowed">Distance allowed</label>
+                <input type="text" id="distanceAllowed" formControlName="distanceAllowed" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && addAdForm.get('distanceAllowed').errors }" />
+                <div *ngIf="submitted && addAdForm.get('distanceAllowed').errors" class="invalid-feedback">
+                  <div *ngIf="addAdForm.get('distanceAllowed').errors['required']">Phone Number is required</div>
+                  <div *ngIf="addAdForm.get('distanceAllowed').errors['minlength']">A phone number must have at least 9
+                    digits
+                  </div>
+                </div>
+              </div>
+
+            <div>
+              <mat-form-field>
+                <mat-select id="cdw" formControlName="cdw" class="form-control" placeholder="Collision damage waiver">
+                  <mat-option value="Yes">Yes</mat-option>
+                  <mat-option value="No">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <label for="childSeats">Child seats</label>
+              <input type="text" id="childSeats" formControlName="childSeats" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && addAdForm.get('childSeats').errors }" />
+              <div *ngIf="submitted && addAdForm.get('childSeats').errors" class="invalid-feedback">
+                <div *ngIf="addAdForm.get('childSeats').errors['required']">Phone Number is required</div>
+                <div *ngIf="addAdForm.get('childSeats').errors['minlength']">A phone number must have at least 9
+                  digits
+                </div>
+              </div>
+            </div>
+            <button mat-raised-button style="position: center" color="primary" class="pull-right">Save</button>
+          </form>
+          <button mat-raised-button color="primary" class="pull-right" (click)="close()">Close</button>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,32 @@
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <mat-card>
+          <h3>Search</h3>
+          <hr>
+          <form [formGroup]="SearchForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <mat-form-field>
+                <input matInput type="datetime-local" placeholder="Start date" id="startDate" formControlName="startDate" class="form-control" [ngClass]="{ 'is-invalid': submitted}">
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field>
+                <input matInput type="datetime-local" placeholder="End date" id="endDate" formControlName="endDate" class="form-control" [ngClass]="{ 'is-invalid': submitted}">
+              </mat-form-field>
+            </div>
+
+
+            <button mat-raised-button color="primary">Rent</button>
+
+
+          </form>
+          <button class="mat-raised-button"(click)="close()">Close</button>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://ftn.uns.ac.rs.tim13" xmlns:tns="http://ftn.uns.ac.rs.tim13" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" form="qualified" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="role" type="tns:Role" form="qualified" minOccurs="0"/>
+      <xs:element name="status" type="tns:UserStatus" form="qualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Message">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" form="qualified" minOccurs="0"/>
+      <xs:element name="sender" type="tns:User" form="qualified" minOccurs="0"/>
+      <xs:element name="receiver" type="tns:User" form="qualified" minOccurs="0"/>
+      <xs:element name="text" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="subject" type="xs:string" form="qualified" minOccurs="0"/>
+      <xs:element name="messageTime" type="xs:dateTime" form="qualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="UserStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACCEPTED"/>
+      <xs:enumeration value="AWAITING_APPROVAL"/>
+      <xs:enumeration value="BLOCKED"/>
+      <xs:enumeration value="REMOVED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Role">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADMINISTRATOR"/>
+      <xs:enumeration value="ENDUSER"/>
+      <xs:enumeration value="FIRM"/>
+      <xs:enumeration value="AGENT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="getMessageRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="id" type="xs:long" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getMessageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="message" type="tns:Message" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+

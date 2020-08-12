@@ -1,0 +1,37 @@
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <mat-card>
+          <h3>Add Transmission Type</h3>
+          <hr>
+          <form [formGroup]="addTransmissionTypeForm" (ngSubmit)="onSubmit()">
+
+
+            <div class="form-group">
+              <label for="type">Type</label>
+              <input type="text" id="type" formControlName="type" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && addTransmissionTypeForm.get('type').errors }" />
+              <div *ngIf="submitted && addTransmissionTypeForm.get('type').errors" class="invalid-feedback">
+                <div *ngIf="addTransmissionTypeForm.get('type').errors['required']">Transmission type is required</div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="serialNumber">Serial number</label>
+              <input type="text" id="serialNumber" formControlName="serialNumber" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && addTransmissionTypeForm.get('serialNumber').errors }" />
+              <div *ngIf="submitted && addTransmissionTypeForm.get('serialNumber').errors" class="invalid-feedback">
+                <div *ngIf="addTransmissionTypeForm.get('serialNumber').errors['required']">Serial number is required</div>
+              </div>
+            </div>
+
+
+            <button mat-raised-button style="position: center" color="primary" class="pull-right">Save</button>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

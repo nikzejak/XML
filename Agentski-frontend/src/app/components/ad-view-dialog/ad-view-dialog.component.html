@@ -1,0 +1,139 @@
+<div class="prozor">
+
+
+
+<mat-card class="example-card">
+  <img mat-card-image src="{{image}}">
+      <mat-card-content>
+      <button mat-flat-button color="primary"  (click)="nextImage()">Next</button>
+      <button mat-flat-button color="warn" (click)="previous_image()">Previous</button>
+  </mat-card-content>
+</mat-card>
+
+
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <mat-card>
+        <h3>Rent a Car Mirkovic</h3>
+        <hr>
+        <form [formGroup]="adViewForm" (ngSubmit)="onSubmit()">
+          <div class="form-group"  >
+            <mat-label for="title">Naziv oglasa</mat-label>
+              <input type="text" readonly id="title" formControlName="title" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && adViewForm.get('title').errors }">
+
+              <div *ngIf="submitted && adViewForm.get('title').errors" class="invalid-feedback">
+              </div>
+
+          </div>
+
+          <div class="form-group" >
+            <label for="description">Description</label>
+              <input  type="text" readonly id="description" formControlName="description" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && adViewForm.get('description').errors }" />
+              <div *ngIf="submitted && adViewForm.get('description').errors" class="invalid-feedback">
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label for="carBrand">Car brand</label>
+            <input type="text" readonly id="carBrand" formControlName="carBrand" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && adViewForm.get('carBrand').errors }">
+            <div *ngIf="submitted && adViewForm.get('carBrand').errors" class="invalid-feedback">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="carModel">Car model</label>
+            <input type="text" readonly id="carModel" formControlName="carModel" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && adViewForm.get('carModel').errors }" />
+            <div *ngIf="submitted && adViewForm.get('carModel').errors" class="invalid-feedback">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="carType">Car type</label>
+            <input type="text" readonly id="carType" formControlName="carType" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && adViewForm.get('carType').errors }" />
+            <div *ngIf="submitted && adViewForm.get('carType').errors" class="invalid-feedback">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="carStatus">Car status</label>
+            <input type="text" readonly id="carStatus" formControlName="carStatus" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && adViewForm.get('carStatus').errors }" />
+            <div *ngIf="submitted && adViewForm.get('carStatus').errors" class="invalid-feedback">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="fuelType">Fuel type</label>
+            <input type="text" readonly id="fuelType" formControlName="fuelType" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && adViewForm.get('fuelType').errors }" />
+            <div *ngIf="submitted && adViewForm.get('fuelType').errors" class="invalid-feedback">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="transmissionType">Transmission type</label>
+            <input type="text" readonly id="transmissionType" formControlName="transmissionType" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && adViewForm.get('transmissionType').errors }" />
+            <div *ngIf="submitted && adViewForm.get('transmissionType').errors" class="invalid-feedback">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="place">Place</label>
+            <input type="text" readonly id="place" formControlName="place" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && adViewForm.get('place').errors }" />
+            <div *ngIf="submitted && adViewForm.get('place').errors" class="invalid-feedback">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="distanceAllowed">Distance allowed</label>
+            <input type="text" readonly id="distanceAllowed" formControlName="distanceAllowed" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && adViewForm.get('distanceAllowed').errors }" />
+            <div *ngIf="submitted && adViewForm.get('distanceAllowed').errors" class="invalid-feedback">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="childSeats">Child seats</label>
+            <input type="text" readonly id="childSeats" formControlName="childSeats" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && adViewForm.get('childSeats').errors }" />
+            <div *ngIf="submitted && adViewForm.get('childSeats').errors" class="invalid-feedback">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mileage">Mileage</label>
+            <input type="text" readonly id="mileage" formControlName="mileage" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && adViewForm.get('mileage').errors }" />
+            <div *ngIf="submitted && adViewForm.get('mileage').errors" class="invalid-feedback">
+            </div>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <mat-select id="price" formControlName="price" class="form-control" placeholder="Select a PriceList">
+                <mat-option *ngFor="let option of priceLists" value="{{option.id}}">{{option.id}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <form>
+              <button mat-raised-button color="warn" (click)="view()">View pricelist</button>
+            </form>
+          </div>
+          <div></div>
+
+          <button mat-raised-button color="primary" class="pull-right">Rent</button>
+          <button class="mat-raised-button"(click)="close()">Close</button>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>
+</div>
+

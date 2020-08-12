@@ -1,0 +1,23 @@
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <mat-card>
+          <h3>Add Car Model</h3>
+          <hr>
+          <form [formGroup]="addCarModelForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="car_model">Car model</label>
+              <input type="text" id="car_model" formControlName="car_model" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && addCarModelForm.get('car_model').errors }" />
+              <div *ngIf="submitted && addCarModelForm.get('car_model').errors" class="invalid-feedback">
+                <div *ngIf="addCarModelForm.get('car_model').errors['required']">Car model is required</div>
+              </div>
+            </div>
+            <button mat-raised-button style="position: center" color="primary" class="pull-right">Save</button>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

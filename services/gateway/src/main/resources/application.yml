@@ -1,0 +1,44 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+        routes:
+          - id: authentication
+            uri: lb://authentication
+            predicates:
+              - Path=/authentication/**
+            filters:
+              - RewritePath=/authentication/(?<path>.*), /$\{path}
+          - id: admin
+            uri: lb://admin
+            predicates:
+              - Path=/admin/**
+            filters:
+              - RewritePath=/admin/(?<path>.*), /$\{path}
+          - id: ad
+            uri: lb://ad
+            predicates:
+              - Path=/ad/**
+            filters:
+              - RewritePath=/ad/(?<path>.*), /$\{path}
+          - id: gps
+            uri: lb://gps
+            predicates:
+              - Path=/gps/**
+            filters:
+              - RewritePath=/gps/(?<path>.*), /$\{path}
+          - id: renting
+            uri: lb://renting
+            predicates:
+              - Path=/renting/**
+            filters:
+              - RewritePath=/renting/(?<path>.*), /$\{path}
+
+
+

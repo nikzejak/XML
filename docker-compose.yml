@@ -1,0 +1,165 @@
+version: '3'
+services:
+
+  consul-server:
+    image: consul-server
+    build:
+      context: ./consul-server
+      dockerfile: Dockerfile
+    tty: true
+    ports: 
+      - "8500:8500"
+    networks:
+      static-network:
+        ipv4_address: 172.20.0.2
+
+
+  postgres:
+    image: 'postgres'
+    container_name: postgres
+    restart: always
+    networks:
+      -  static-network
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=ftn  
+      - POSTGRES_DB=Services
+      - REGISTRY_HOST=consul-server
+    ports:
+      - "5432:5432"
+    tty: true
+    depends_on:
+      - consul-server
+
+  authentication-service:
+    image: authenticatione_service
+    build:
+      context: ./services/authenticationService
+      dockerfile: Dockerfile
+    tty: true
+    ports: 
+      - "8087:8087"
+    environment:
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: ftn
+      DATABASE_DOMAIN: postgres
+      REGISTRY_HOST: consul-server
+      POSTGRES_DB: Services
+    networks:
+      - static-network
+    depends_on: 
+      - consul-server
+      - postgres
+
+
+  admin-service:
+     image: admin_service
+     build:
+       context: ./services/adminService
+       dockerfile: Dockerfile
+     tty: true
+     ports:
+       - "8086:8086"
+     environment:
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: ftn
+      DATABASE_DOMAIN: postgres
+      REGISTRY_HOST: consul-server
+      POSTGRES_DB: Services
+     networks:
+       - static-network
+     depends_on:
+       - consul-server
+       - postgres
+  ad-service:
+     image: ad_service
+     build:
+       context: ./services/adService
+       dockerfile: Dockerfile
+     tty: true
+     ports:
+       - "8085:8085"
+     environment:
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: ftn
+      DATABASE_DOMAIN: postgres
+      REGISTRY_HOST: consul-server
+      POSTGRES_DB: Services
+     networks:
+       - static-network
+     depends_on:
+       - consul-server
+       - postgres
+
+  gps-service:
+     image: gps_service
+     build:
+       context: ./services/gpsService
+       dockerfile: Dockerfile
+     tty: true
+     ports:
+       - "8088:8088"
+     networks:
+       - static-network
+     depends_on:
+       - consul-server
+
+  renting-service:
+    image: renting_service
+    build:
+      context: ./services/rentingService
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "8090:8090"
+    environment:
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: ftn
+      DATABASE_DOMAIN: postgres
+      REGISTRY_HOST: consul-server
+      POSTGRES_DB: Services
+    networks:
+      - static-network
+    depends_on:
+      - consul-server
+      - postgres
+   
+  message-service:
+    image: message_service
+    build:
+      context: ./services/rentingService
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "8091:8091"
+    environment:
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: ftn
+      DATABASE_DOMAIN: postgres
+      REGISTRY_HOST: consul-server
+      POSTGRES_DB: Services
+    networks:
+      - static-network
+    depends_on:
+      - consul-server
+      - postgres
+
+  gateway:
+    image: gateway
+    build:
+      context: ./services/gateway
+      dockerfile: Dockerfile
+    tty: true
+    ports: 
+      - "8084:8084"
+    networks:
+      - static-network
+    depends_on:
+      - consul-server
+
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

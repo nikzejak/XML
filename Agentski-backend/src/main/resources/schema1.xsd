@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ftn.uns.ac.rs.tim13"
+                          targetNamespace="http://ftn.uns.ac.rs.tim13" elementFormDefault="qualified">
+
+  <xs:complexType name="Car">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="carBrand" type="CarBrand" minOccurs="0"/>
+      <xs:element name="carModel" type="CarModel" minOccurs="0"/>
+      <xs:element name="carType" type="CarType" minOccurs="0"/>
+      <xs:element name="fuelType" type="FuelType" minOccurs="0"/>
+      <xs:element name="transmissionType" type="TransmissionType" minOccurs="0"/>
+      <xs:element name="price" type="xs:int"/>
+      <xs:element name="discount" type="xs:int"/>
+      <xs:element name="mileage" type="xs:float"/>
+      <xs:element name="carStatus" type="CarStatus" minOccurs="0"/>
+      <xs:element name="distanceAllowed" type="xs:float"/>
+      <xs:element name="collisionDamageWaiver" type="xs:boolean"/>
+      <xs:element name="childSeats" type="xs:int"/>
+      <xs:element name="averageRating" type="xs:double"/>
+      <xs:element name="commentCount" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CarBrand">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="brand" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CarModel">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="model" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CarType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="type" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FuelType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="type" type="xs:string" minOccurs="0"/>
+      <xs:element name="serialNumber" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TransmissionType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="serialNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="type" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Client">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+      <xs:element name="firstName" type="xs:string" minOccurs="0"/>
+      <xs:element name="lastName" type="xs:string" minOccurs="0"/>
+      <xs:element name="jmbg" type="xs:string" minOccurs="0"/>
+      <xs:element name="phoneNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="personalID" type="xs:string" minOccurs="0"/>
+      <xs:element name="pib" type="xs:string" minOccurs="0"/>
+      <xs:element name="address" type="xs:string" minOccurs="0"/>
+      <xs:element name="role" type="Role" minOccurs="0"/>
+      <xs:element name="ads" type="Ad" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="adCounter" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Ad">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="car" type="Car" minOccurs="0"/>
+      <xs:element name="profilePicture" type="xs:string" minOccurs="0"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+      <xs:element name="pictureSet" type="Picture" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="client" type="Client" minOccurs="0"/>
+      <xs:element name="startOfAd" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="endOfAd" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="isActive" type="xs:boolean"/>
+      <xs:element name="currentDriver" type="Client" minOccurs="0"/>
+      <xs:element name="comments" type="Comment" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="place" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Picture">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="picture" type="xs:string" minOccurs="0"/>
+      <xs:element name="ad" type="Ad" minOccurs="0"/>
+      <xs:element name="isDeleted" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Comment">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="commenter" type="User" minOccurs="0"/>
+      <xs:element name="comment" type="xs:string" minOccurs="0"/>
+      <xs:element name="approved" type="xs:boolean"/>
+      <xs:element name="carRating" type="xs:int"/>
+      <xs:element name="ad" type="Ad" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+      <xs:element name="role" type="Role" minOccurs="0"/>
+      <xs:element name="status" type="UserStatus" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="CarStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RENTED"/>
+      <xs:enumeration value="NOT_RENTED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Role">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADMINISTRATOR"/>
+      <xs:enumeration value="ENDUSER"/>
+      <xs:enumeration value="FIRM"/>
+      <xs:enumeration value="AGENT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="UserStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACCEPTED"/>
+      <xs:enumeration value="AWAITING_APPROVAL"/>
+      <xs:enumeration value="BLOCKED"/>
+      <xs:enumeration value="REMOVED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="getAdRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="id" type="xs:long" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getAdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ad" type="tns:Ad" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+

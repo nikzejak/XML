@@ -1,0 +1,72 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === true">
+
+    <mat-toolbar color="warn">Menu</mat-toolbar>
+
+    <mat-nav-list *ngIf="isNone()">
+      <a mat-list-item routerLink="">Home</a>
+      <a mat-list-item routerLink="/login">Login</a>
+      <a mat-list-item routerLink="/register">Register</a>
+      <a mat-list-item routerLink="/search">Search cars</a>
+      <a mat-list-item routerLink="/rentConditions">Rent conditions</a>
+      <a mat-list-item routerLink="/Contact">Contact</a>
+      <a mat-list-item routerLink="/About">About</a>
+
+    </mat-nav-list>
+
+    <mat-nav-list *ngIf="isAgent()">
+      <a mat-list-item routerLink="/agent/home">Home</a>
+      <a mat-list-item routerLink="/inbox">Inbox</a>
+      <a mat-list-item routerLink="agent/addAd">Add new ad</a>
+      <a mat-list-item routerLink="agent/myAds">My ads</a>
+      <a mat-list-item routerLink="agent/myActiveRents">My active rents</a>
+      <a mat-list-item routerLink="agent/RateAndComment">Rate and comment</a>
+      <a mat-list-item routerLink="agent/rentedCars">Rented cars</a>
+      <a mat-list-item routerLink="agent/addPriceList">Add pricelist</a>
+      <a mat-list-item (click)="onLogout()">Logout</a>
+    </mat-nav-list>
+
+<!--    <mat-nav-list *ngIf="isAdministrator()">-->
+<!--      <a mat-list-item routerLink="/administrator/home">Home</a>-->
+<!--      <a mat-list-item routerLink="/codeBook">Codebook</a>-->
+<!--      <a mat-list-item routerLink="/addCarBrand">Add Car Brand</a>-->
+<!--      <a mat-list-item routerLink="/addCarModel">Add Car Model</a>-->
+<!--      <a mat-list-item routerLink="/addCarType">Add Car Type</a>-->
+<!--      <a mat-list-item routerLink="/addFuelType">Add Fuel type</a>-->
+<!--      <a mat-list-item routerLink="/addTransmissionType">Add Transmission type</a>-->
+<!--      <a mat-list-item routerLink="/administrator/end-users-operations">End user operations</a>-->
+<!--      <a mat-list-item routerLink="/administrator/commentForOperation">Comments operations</a>-->
+<!--      <a mat-list-item (click)="onLogout()">Logout</a>-->
+<!--    </mat-nav-list>-->
+
+<!--    <mat-nav-list *ngIf="isEndUser()">-->
+<!--      <a mat-list-item routerLink="endUser/home">Home</a>-->
+<!--      <a mat-list-item routerLink="endUser/addAd">Add new ad</a>-->
+<!--      <a mat-list-item routerLink="/search">Search cars</a>-->
+<!--      <a mat-list-item routerLink="/inbox">Inbox</a>-->
+<!--      <a mat-list-item routerLink="endUser/myAds">My ads</a>-->
+<!--      <a mat-list-item routerLink="endUser/rentingRequests">Renting requests</a>-->
+<!--      <a mat-list-item routerLink="endUser/rentedCars">Rented cars</a>-->
+<!--      <a mat-list-item routerLink="endUser/rentConditions">Rent conditions</a>-->
+<!--      <a mat-list-item routerLink="endUser/Contact">Contact</a>-->
+<!--      <a mat-list-item routerLink="endUser/About">About</a>-->
+<!--      <a mat-list-item (click)="onLogout()">Logout</a>-->
+<!--    </mat-nav-list>-->
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="warn">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <span>Rent a Car Mirkovic</span>
+
+      <span></span>
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

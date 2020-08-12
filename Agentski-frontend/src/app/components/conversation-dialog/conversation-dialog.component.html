@@ -1,0 +1,13 @@
+<mat-list>
+  <div mat-subheader>Messages</div>
+  <mat-list-item *ngFor="let message of messages">
+    <mat-icon mat-list-icon>message</mat-icon>
+    <div mat-line>{{message.sender.email}}</div>
+    <div mat-line>{{message.subject}}</div>
+    <div mat-line> {{message.text}} </div>
+  </mat-list-item>
+</mat-list>
+<mat-dialog-actions>
+  <button class="mat-raised-button"(click)="send()">Reply</button>
+  <button class="mat-raised-button"(click)="close()">Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,34 @@
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <mat-card>
+          <h3>Message</h3>
+          <hr>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <label for="subject">Subject: </label>
+              <input type="text" id="subject" formControlName="subject" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.subject.errors }">
+              <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
+                <div *ngIf="f.subject.errors.required">Subject is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <textarea style="width:95%;" id="text" rows="10" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.text.errors }"></textarea>
+              <div *ngIf="submitted && f.text.errors" class="invalid-feedback">
+                <div *ngIf="f.text.errors.required">Text is required</div>
+              </div>
+            </div>
+
+
+            <button mat-raised-button color="primary" class="pull-right">Send</button>
+
+          </form>
+          <button mat-raised-button color="primary" class="pull-right" (click)="close()">Close</button>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

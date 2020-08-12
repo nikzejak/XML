@@ -1,0 +1,43 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let request"> {{request.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="reservedFrom">
+      <th mat-header-cell *matHeaderCellDef> Reserved from </th>
+      <td mat-cell *matCellDef="let request"> {{request.reservedFrom}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="reservedTo">
+      <th mat-header-cell *matHeaderCellDef> Reserved to </th>
+      <td mat-cell *matCellDef="let request"> {{request.reservedTo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cars">
+      <th mat-header-cell *matHeaderCellDef> Cars </th>
+      <td mat-cell *matCellDef="let request"> {{carsToString(request)}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="message">
+      <th mat-header-cell *matHeaderCellDef> Message owner </th>
+      <td mat-cell *matCellDef="let request">
+        <button mat-flat-button color="primary" (click)="message (request)"> Send message </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="allowed">
+      <th mat-header-cell *matHeaderCellDef> Distance allowed </th>
+      <td mat-cell *matCellDef="let request">
+        <button mat-flat-button color="primary" (click)="set_distance(request)"> Set </button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

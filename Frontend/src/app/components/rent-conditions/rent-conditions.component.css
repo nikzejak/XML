@@ -1,0 +1,13 @@
+.container {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  font-family: 'Open Sans', Arial, sans-serif;
+  box-sizing: border-box;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 750px;
+}
